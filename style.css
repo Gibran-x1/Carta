@@ -1,0 +1,228 @@
+/* reset css */
+* {
+  min-width: 0;
+  font: inherit;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img,
+video,
+svg {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* styles */
+/* TODO: Cambiar la fuente
+
+* {
+  font-family: comic-sans;
+} */
+
+body {
+  background-color: #b0a4e3;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative; /* Permite posicionar elementos absolutos dentro de main */
+}
+
+.container-letter {
+  position: relative;
+  z-index: 2; /* Asegura que la carta esté encima del rectángulo */
+}
+
+.cover {
+  position: absolute;
+  border-left: 200px solid transparent;
+  border-right: 200px solid transparent;
+  border-top: 100px solid #6a5acd;
+  border-bottom: 100px solid transparent;
+  transition: transform .75s;
+  transform-origin: top;
+}
+
+.paper {
+  position: absolute;
+  padding: 1.5rem;
+  line-height: 1.5rem;
+  right: 5px;
+  z-index: -1;
+  background: white;
+  width: 390px;
+  height: 180px;
+  transition: all .75s;
+}
+
+.letter {
+  border-left: 200px solid #836fff;
+  border-right: 200px solid #836fff;
+  border-top: 100px solid transparent;
+  border-bottom: 100px solid #7b68ee;
+}
+
+.options {
+  display: flex;
+  gap: 5rem;
+  z-index: 2; /* Asegura que los botones estén encima del rectángulo */
+}
+
+.options button {
+  color: #6a5acd;
+  font-weight: 600;
+  border-radius: 3px;
+  background: #b0a4e3;
+  padding: 0.5rem 1rem;
+  border: 1px solid #6a5acd;
+  cursor: pointer;
+}
+
+.options button:hover {
+  background: #836fff;
+  color: white;
+}
+
+.open-cover {
+  transform: rotatex(180deg);
+}
+
+.open-paper {
+  animation: openPaper .5s forwards;
+}
+
+@keyframes openPaper {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -120px;
+  }
+}
+
+.close-paper {
+  animation: closePaper .5s forwards;
+}
+
+@keyframes closePaper {
+  0% {
+    top: -120px;
+  }
+  100% {
+    top: 0;
+  }
+}
+
+/* Estilos para el gif */
+#gifContainer {
+  display: none;
+  text-align: center;
+  margin-top: 20px;
+}
+
+#gifContainer img {
+  max-width: 100%;
+  height: auto;
+}
+
+.heart {
+  display: none;
+  position: absolute;
+  top: 25%;
+  left: 46.5%;
+  margin: auto;
+  font-size: 3rem;
+  color: #6a5acd;
+  animation: crecer 1s forwards;
+}
+
+@keyframes crecer {
+  0% {
+    scale: 1;
+    opacity: 1;
+  }
+  100% {
+    scale: 3;
+    opacity: 0;
+  }
+}
+
+/* Estilos para el mensaje de "PRESIONE DE NUEVO" */
+#topMessage {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 36px; /* Aumenta el tamaño de la fuente */
+  font-weight: bold;
+  text-transform: uppercase;
+  animation: moveAndColor 3s infinite;
+  display: none;
+}
+
+#sadFacesContainer {
+  position: fixed;
+  top: 100px; /* Ajusta la posición del contenedor de caritas tristes */
+  width: 100%;
+  text-align: center;
+  font-size: 48px; /* Aumenta el tamaño de la fuente */
+  display: none;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes moveAndColor {
+  0% { color: red; transform: translateY(0); }
+  25% { color: blue; transform: translateY(10px); }
+  50% { color: green; transform: translateY(0); }
+  75% { color: orange; transform: translateY(10px); }
+  100% { color: red; transform: translateY(0); }
+}
+
+/* Estilos para el gif */
+.gif {
+  position: absolute;
+  width: 150px; /* Aumenta el tamaño del gif */
+  height: 150px; /* Aumenta el tamaño del gif */
+  z-index: 3; /* Asegura que el gif esté encima del rectángulo */
+}
+
+/* Rectángulo horizontal en medio */
+.middle-rectangle {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 350px; /* Ajusta la altura del rectángulo */
+  background-color: #4b0082; /* Tono más oscuro de morado azulado */
+  transform: translateY(-50%);
+  z-index: 1; /* Asegura que el rectángulo esté debajo de la carta, los botones y el gif */
+}
